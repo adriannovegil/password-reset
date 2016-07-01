@@ -102,4 +102,16 @@ router.get('/signup', function(req, res) {
   });
 });
 
+router.post('/signup', function(req, res) {
+  var user = new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    });
+
+    console.log("User Name......: " + user.username);
+    console.log("User Email.....: " + user.email);
+    console.log("User Password..: " + user.password);
+});
+
 module.exports = router;
