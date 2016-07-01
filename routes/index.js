@@ -70,8 +70,17 @@ var User = mongoose.model('User', userSchema);
 mongoose.connect('localhost');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res){
+  res.render('index', {
+    title: 'Express',
+    user: req.user
+  });
+});
+
+router.get('/login', function(req, res) {
+  res.render('login', {
+    user: req.user
+  });
 });
 
 module.exports = router;
