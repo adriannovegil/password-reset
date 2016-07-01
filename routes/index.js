@@ -96,4 +96,10 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
+router.get('/signup', function(req, res) {
+  res.render('signup', {
+    user: req.user
+  });
+});
+
 module.exports = router;
