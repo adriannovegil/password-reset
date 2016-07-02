@@ -103,15 +103,20 @@ router.get('/signup', function(req, res) {
 });
 
 router.post('/signup', function(req, res) {
+  // Recovery the data from the post
   var user = new User({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password
     });
-
-    console.log("User Name......: " + user.username);
-    console.log("User Email.....: " + user.email);
-    console.log("User Password..: " + user.password);
+  // Saving the data into the data base
+  user.save(function(err) {
+    // Then, we login in the system.
+    req.logIn(user, function(err) {
+      // Finally, redirect the user to the main page
+      res.redirect('/');
+    });
+  });
 });
 
 module.exports = router;
