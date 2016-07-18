@@ -77,6 +77,7 @@ router.get('/', function(req, res){
   });
 });
 
+/* Login page. */
 router.get('/login', function(req, res) {
   res.render('login', {
     user: req.user
@@ -96,6 +97,7 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
+/* Signup page. */
 router.get('/signup', function(req, res) {
   res.render('signup', {
     user: req.user
@@ -117,6 +119,12 @@ router.post('/signup', function(req, res) {
       res.redirect('/');
     });
   });
+});
+
+/* Logout page. */
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 module.exports = router;
