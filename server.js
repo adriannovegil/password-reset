@@ -15,8 +15,13 @@ var passport = require('passport');
 
 var flash = require('express-flash');
 
-// Impor the index router.
+// Impor the routes.
 var routes = require('./routes/index');
+var login = require('./routes/login');
+var logout = require('./routes/logout');
+var signup = require('./routes/signup');
+var forgot = require('./routes/forgot');
+var reset = require('./routes/reset');
 
 // =============================================================================
 //  Configuration
@@ -48,6 +53,11 @@ app.use(flash());
 // =============================================================================
 
 app.use('/', routes);
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/signup', signup);
+app.use('/forgot', forgot);
+app.use('/reset', reset);
 
 // =============================================================================
 //  Error Management
